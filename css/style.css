@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*, ::before, ::after{ margin: 0; padding: 0; box-sizing: border-box; }
+ul{ list-style: none; padding: 0; }
+a{ text-decoration: none; color: inherit; display: inline-block; }
+button{ cursor: pointer; padding: 0; }
+img{ vertical-align: bottom; }
+
+section{display: block; margin: 0px;}
+
+html{ --primary: #29a19c; --dark: #222831; --text: #fff; --ff: "Montserrat", sans-serif; font: 400 15px "Montserrat", sans-serif; color: var(--text); }
+body{ font-size: 16px; background-color: var(--dark); }
+
+/* Fonts */
+.font-montserrat{ font-family: "Montserrat", sans-serif; font-optical-sizing: auto; font-style: normal; }
+.font-grand-hotel{ font-family: "Grand Hotel", sans-serif; font-style: normal; }
+.bold{ font-weight: 700; }
+.regular{ font-weight: 400; }
+
+/* Heading default font styles */
+h1, h2{ font-family: "Grand Hotel", sans-serif; font-weight: 400; font-style: normal; }
+
+/* Containers */
+.container-lg{ max-width: 1388px; margin: auto; padding: 0 1rem; }
+.container{ max-width: 1230px; margin: auto; padding: 0 1rem; }
+
+.row{ display: flex; flex-flow: wrap; margin: 0 -1rem; }
+
+[class^="col-"]{ flex: 1 0 auto; padding: 0 1rem; }
+
+/* Column partitions */
+.col-1{ flex-basis: 8.33%; max-width: 8.33%; }
+.col-2{ flex-basis: 16.66%; max-width: 16.66%; }
+.col-3{ flex-basis: 25%; max-width: 25%; }
+.col-4{ flex-basis: 33.33%; max-width: 33.33%; }
+.col-5{ flex-basis: 41.66%; max-width: 41.66%; }
+.col-6{ flex-basis: 50%; max-width: 50%; }
+.col-7{ flex-basis: 58.33%; max-width: 58.33%; }
+.col-8{ flex-basis: 66.66%; max-width: 66.66%; }
+.col-9{ flex-basis: 75%; max-width: 75%; }
+.col-10{ flex-basis: 83.33%; max-width: 83.33%; }
+.col-12{ flex-basis: 100%; max-width: 100%; }
+
+/* Global class css */
+.flex{ display: flex; flex-flow: row wrap; }
+.flex-col{ display: flex; flex-flow: column; }
+.justify-center{ justify-content: center; }
+.justify-sb{ justify-content: space-between; }
+.align-center{ align-items: center; }
+.grid{ display: grid; place-items: center; }
+.img-resp{ max-width: 100%; height: auto; }
+
+.separator{ height: 300px; }
+
+.rounded{ padding: 1.13rem 2rem; font: 700 33.33px var(--ff); color: inherit; border-radius: 15px; border: none; }
+.light{ background-color: var(--primary); border: 1px solid var(--dark); }
+.dark{ background-color: var(--dark); border: 1px solid var(--primary); }
+
+.btn.dark:hover{ background-color: var(--primary); border-color: var(--dark); }
+.btn.light:hover{ background-color: var(--dark); border-color: var(--primary); }
+
+main{display: block; margin: 0px;}
+
+/* Header */
+header{ background-color: var(--dark); padding: 2rem 0; }
+nav ul{ gap: 3rem; }
+nav li{ position: relative; }
+nav li::after{ content: ''; position: absolute; bottom: 0; height: 3px; left: 50%; right: 50%; border: none; background-color: var(--primary); opacity: 0; visibility: hidden; transition: 200ms; }
+nav li.active::after{ left: 8px; right: 8px; opacity: 1; visibility: visible; }
+nav a{ font-size: 25px; line-height: 4rem; padding: 0 5px; margin-top: 1rem; }
+/* Hover Effect */
+nav :not(li.active):hover::after{ left: 8px; right: 8px; opacity: 1; visibility: visible; }
+
+nav input, nav label, nav .menu-icon, nav .cancel-icon{ display: none; }
+nav .menu-icon div{ width: 35px; height: 5px; background-color: var(--text); margin: 6px 0; }
+nav .cancel-icon:after{ display: inline-block; content: "\00d7"; color: grey; font-size: 6rem; line-height: 1; }
+
+/* Banner */
+.banner{ color: #fff; padding: 0 4px 15rem 0; background: var(--dark) url(../img/bg/banner-bg.webp) no-repeat  top center / cover;  }
+h1{ font-size: 10.21rem; }
+.banner h2{ font-size: 2.21rem; font-weight: 700; text-transform: uppercase; margin-top: 3rem; }
+.banner p{ font-size: 14.6px; line-height: 23.97px; margin: 1.8rem 0 1.73rem; }
+.banner button{ margin-bottom: 4rem; }
+
+/* Common Coffee Styles */
+.coffee-container{ background: var(--dark) url(../img/bg/coffee-container-bg.webp) no-repeat top center / cover; padding-bottom: 3rem; }
+.coffee-container + .separator{ background: url(../img/bg/wave1.webp) no-repeat top center / cover; height: 217px; }
+.coffee-container section{ margin-bottom: 4rem; }
+.coffee .title > *{ margin-bottom: 4rem; }
+.coffee h2{ font-size: 8.33rem; }
+.coffee img{ max-width: 100%; height: auto; }
+.coffee .desc{ text-align: right; }
+.coffee .desc > *{ margin-bottom: 4rem; }
+.coffee p{ font-size: 23.67px; line-height: 39.24px; }
+.reverse .row{ flex-flow: row-reverse wrap; }
+.reverse .desc{ text-align: left; }
+.reverse .title{ text-align: right; }
+
+/* Black Coffee */
+.black-coffee{ padding: 5rem 0 3rem; background: var(--primary) url(../img/bg/black-coffee-bg.webp) no-repeat top center / cover; }
+.black-coffee + .separator{ background: url(../img/bg/wave-down-icon.webp) center center / cover; }
+
+/* Vouchers */
+.vouchers{ padding: 3rem 0; }
+.vouchers h2{ font-size: 8.7rem; }
+.vouchers img{ margin-right: 1.5rem; }
+
+/* Reviews */
+.reviews{ padding: 3rem 0 0; text-align: center; margin-bottom: 5rem; }
+.reviews h2{ font-size: 5.83rem; }
+.reviews .row{ margin-top: 5rem; }
+.reviews .flex-col{ padding: 0 3rem; margin-bottom: 2rem; }
+.reviews img{ max-width: 100%; height: auto; margin-bottom: 3.5rem; }
+.reviews cite{ font-size: 50px; }
+.reviews p:last-child{ font-size: 25px; line-height: 27.5px; margin-top: 2rem; }
+
+/* Timing */
+.timing{ background: var(--primary) url(../img/bg/timing-bg.webp) no-repeat top center / cover; text-align: center; }
+.timing .container.flex-col{ gap: 8rem; }
+.timing h2{ font-size: 6.5rem; }
+.timing b, .timing p{ font-size: 37.5px; }
+.timing + .separator{ background: url(../img/bg/wave-down-icon-2.webp) no-repeat top center / cover; }
+
+/* Branches */
+.branches{ text-align: center; background: var(--dark) url(../img/bg/branches-bg.webp) no-repeat top center / cover; }
+.branches h2{ font-size: 5.83rem; margin-bottom: 5rem; }
+.branches .flex-col{ margin-bottom: 38px; gap: 38px; }
+.branches .location{ width: 250px; position: relative; }
+.branches .location::after{ content: ''; position: absolute; bottom: -12px; left: 2px; width: 15px; height: 30px; border-radius: 50%; background-color: var(--primary); transform: rotateZ(-20deg); }
+.branches p{ font-size: 14.58px; line-height: 27.5px; }
+.branches + .separator{ background: url(../img/bg/wave-up.webp) no-repeat top center / cover; }
+
+/* Contact and Information */
+.contact-info{ background-color: var(--primary); padding-bottom: 3rem; }
+.contact-info h3{ font-size: 33.33px; margin-bottom: 4rem; }
+.contact-info ul{ gap: 1rem; }
+.contact-info a{ font-size: 22.22px; line-height: 28.54px; }
+
+/* Footer */
+footer{ background-color: var(--primary); padding: 3.33rem 0; }
+footer > .flex{ gap: 20px; }
+footer .nav li:not(:last-child){ margin-right: 70px; }
+footer a{ font-size: 19.54px; }
+footer .social li:not(:last-child){ margin-right: 48px; }
+
+
+/* Responsive */
+@media screen and (max-width: 1408px){
+    
+}
+
+@media screen and (max-width: 1250px) {
+    nav ul{ gap: 2rem; }
+}
+
+@media screen and (max-width: 980px) {
+    html{ font-size: 14px; }
+    .col-t-1{ flex-basis: 8.33%; max-width: 8.33%; }
+    .col-t-2{ flex-basis: 16.66%; max-width: 16.66%; }
+    .col-t-3{ flex-basis: 25%; max-width: 25%; }
+    .col-t-4{ flex-basis: 33.33%; max-width: 33.33%; }
+    .col-t-6{ flex-basis: 50%; max-width: 50%; }
+    .col-t-7{ flex-basis: 58.33%; max-width: 58.33%; }
+    .col-t-8{ flex-basis: 66.66%; max-width: 66.66%; }
+    .col-t-9{ flex-basis: 75%; max-width: 75%; }
+    .col-t-10{ flex-basis: 83.33%; max-width: 83.33%; }
+    .col-t-12{ flex-basis: 100%; max-width: 100%; }
+
+    .flex-t{ display: flex; flex-flow: row; }
+    .flex-t-col{ display: flex; flex-flow: column; }
+
+    nav ul.flex{ opacity: 0; visibility: hidden; flex-flow: column; position: absolute; top: 0; bottom: 0; background-color: var(--dark); left: 0; right: 50%; transform: translateX(-100%); transition: 200ms; overflow: auto; }
+
+    nav label, nav .menu-icon{ display: block; }
+
+    nav input:checked + label .menu-icon{ display: none; }
+    nav input:checked + label .cancel-icon{ display: block; position: absolute; top: 0; left: 50%; }
+
+    nav input:checked + label + ul.flex{ opacity: 1; visibility: visible; transform: translateX(0); }
+
+    .reviews .flex-col{ padding: 0; }
+
+    .contact-info .info{ margin-top: 3rem; }
+
+    footer > .flex{ flex-flow: column; }
+}
+
+@media screen and (max-width: 600px) {
+    .col-lp-1{ flex-basis: 8.33%; max-width: 8.33%; }
+    .col-lp-2{ flex-basis: 16.66%; max-width: 16.66%; }
+    .col-lp-3{ flex-basis: 25%; max-width: 25%; }
+    .col-lp-4{ flex-basis: 33.33%; max-width: 33.33%; }
+    .col-lp-6{ flex-basis: 50%; max-width: 50%; }
+    .col-lp-7{ flex-basis: 58.33%; max-width: 58.33%; }
+    .col-lp-8{ flex-basis: 66.66%; max-width: 66.66%; }
+    .col-lp-9{ flex-basis: 75%; max-width: 75%; }
+    .col-lp-10{ flex-basis: 83.33%; max-width: 83.33%; }
+    .col-lp-12{ flex-basis: 100%; max-width: 100%; }
+
+    .flex-lp{ display: flex; flex-flow: row; }
+    .flex-lp-col{ display: flex; flex-flow: column; }
+    
+    .reviews .flex-col{ margin-bottom: 5rem; }
+}
+
+@media screen and (max-width: 460px) {
+    html{ font-size: 13px; }
+    .col-p-1{ flex-basis: 8.33%; max-width: 8.33%; }
+    .col-p-2{ flex-basis: 16.66%; max-width: 16.66%; }
+    .col-p-3{ flex-basis: 25%; max-width: 25%; }
+    .col-p-4{ flex-basis: 33.33%; max-width: 33.33%; }
+    .col-p-6{ flex-basis: 50%; max-width: 50%; }
+    .col-p-7{ flex-basis: 58.33%; max-width: 58.33%; }
+    .col-p-8{ flex-basis: 66.66%; max-width: 66.66%; }
+    .col-p-9{ flex-basis: 75%; max-width: 75%; }
+    .col-p-10{ flex-basis: 83.33%; max-width: 83.33%; }
+    .col-p-12{ flex-basis: 100%; max-width: 100%; }
+
+    .flex-p{ display: flex; flex-flow: row; }
+    .flex-p-col{ display: flex; flex-flow: column; }
+
+    h1{ font-size: 6rem; line-height: 15rem; }
+
+    .banner{ padding: 0 4px 2rem 0; }
+
+    .coffee .desc{ margin-top: 5rem; }
+    .coffee img{ width: 100%; height: auto; }
+
+    .vouchers .btn{ padding: 1rem 1rem; }
+
+
+    .timing b, .timing p{ font-size: 25px; }
+
+    .contact-info .info .row{ gap: 3rem; }
+
+    footer .nav.flex{ display: none; }
+
+}
