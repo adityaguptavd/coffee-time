@@ -5,10 +5,12 @@ ul{ list-style: none; padding: 0; }
 a{ text-decoration: none; color: inherit; display: inline-block; }
 button{ cursor: pointer; padding: 0; }
 img{ vertical-align: bottom; }
+select{ cursor: pointer; }
+input{ cursor: text; padding: 5px; }
 
 section{display: block; margin: 0px;}
 
-html{ --primary: #29a19c; --dark: #222831; --text: #fff; --ff: "Montserrat", sans-serif; font: 400 15px "Montserrat", sans-serif; color: var(--text); }
+html{ --primary: #29a19c; --dark: #222831; --text: #fff; --ff: "Montserrat", sans-serif; font: 400 15px "Montserrat", sans-serif; color: var(--text);  scroll-behavior: smooth; scroll-padding-top: 9rem; }
 body{ font-size: 16px; background-color: var(--dark); }
 
 /* Fonts */
@@ -49,12 +51,15 @@ h1, h2{ font-family: "Grand Hotel", sans-serif; font-weight: 400; font-style: no
 .align-center{ align-items: center; }
 .grid{ display: grid; place-items: center; }
 .img-resp{ max-width: 100%; height: auto; }
+.hidden{ display: none; }
 
 .separator{ height: 300px; }
 
-.rounded{ padding: 1.13rem 2rem; font: 700 33.33px var(--ff); color: inherit; border-radius: 15px; border: none; }
+.rounded{ padding: 1.13rem 2rem; font: 700 33.33px var(--ff); color: inherit; border-radius: 15px; border: none; transition: 400ms; }
 .light{ background-color: var(--primary); border: 1px solid var(--dark); }
 .dark{ background-color: var(--dark); border: 1px solid var(--primary); }
+
+.btn.rounded:hover{ transform: translateY(-10%); }
 
 .btn.dark:hover{ background-color: var(--primary); border-color: var(--dark); }
 .btn.light:hover{ background-color: var(--dark); border-color: var(--primary); }
@@ -62,18 +67,31 @@ h1, h2{ font-family: "Grand Hotel", sans-serif; font-weight: 400; font-style: no
 main{display: block; margin: 0px;}
 
 /* Header */
-header{ background-color: var(--dark); padding: 2rem 0; }
+header{ background-color: var(--dark); padding: 1rem 0; height: 9rem; position: sticky; top: 0; left: 0; right: 0; z-index: 2; transition: height 400ms; }
+header.shadow{ box-shadow: 0 10px 10px -10px #00000080; height: 7rem; transition: height 400ms; }
+header .flex{ height: 100%; }
 nav ul{ gap: 3rem; }
-nav li{ position: relative; }
-nav li::after{ content: ''; position: absolute; bottom: 0; height: 3px; left: 50%; right: 50%; border: none; background-color: var(--primary); opacity: 0; visibility: hidden; transition: 200ms; }
-nav li.active::after{ left: 8px; right: 8px; opacity: 1; visibility: visible; }
-nav a{ font-size: 25px; line-height: 4rem; padding: 0 5px; margin-top: 1rem; }
+nav a{ position: relative; font-size: 25px; line-height: 4rem; padding: 0 5px; margin-top: 1rem; }
+nav a::after{ content: ''; position: absolute; bottom: 0; height: 3px; left: 50%; right: 50%; border: none; background-color: var(--primary); opacity: 0; visibility: hidden; transition: 200ms; }
+nav a.active::after{ left: 8px; right: 8px; opacity: 1; visibility: visible; }
 /* Hover Effect */
-nav :not(li.active):hover::after{ left: 8px; right: 8px; opacity: 1; visibility: visible; }
+nav :not(a.active):hover::after{ left: 8px; right: 8px; opacity: 1; visibility: visible; }
 
-nav input, nav label, nav .menu-icon, nav .cancel-icon{ display: none; }
 nav .menu-icon div{ width: 35px; height: 5px; background-color: var(--text); margin: 6px 0; }
-nav .cancel-icon:after{ display: inline-block; content: "\00d7"; color: grey; font-size: 6rem; line-height: 1; }
+
+/* Overlay */
+.overlay{ position: fixed; inset: 0; background-color: #000b; }
+header + .overlay, header .overlay{ z-index: 1; }
+main .overlay{ z-index: 3; }
+
+/* Order form */
+[class^="popup-"]{ max-width: 500px; padding: 2rem; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 10px 10px -10px #00000080; border-radius: 10px; z-index: 4; background-color: var(--primary); }
+[class^="popup-"] h2:nth-child(2){ font-size: 5rem; margin-bottom: 1rem; }
+[class^="popup-"] form{ gap: 2rem; }
+[class^="popup-"] form select, [class^="popup-"] form input{ max-width: 200px; height: 30px; border-radius: 6px; outline: none; }
+[class^="popup-"] .place-order{ font-size: 1.3em; padding: 1rem; max-width: 200px; }
+[class^="popup-"] .close{ position: absolute; top: 4px; right: 4px; }
+[class^="popup-"] .close span{ font-size: 2rem; cursor: pointer; }
 
 /* Banner */
 .banner{ color: #fff; padding: 0 4px 15rem 0; background: var(--dark) url(../img/bg/banner-bg.webp) no-repeat  top center / cover;  }
@@ -150,7 +168,8 @@ footer .social li:not(:last-child){ margin-right: 48px; }
 }
 
 @media screen and (max-width: 1250px) {
-    nav ul{ gap: 2rem; }
+    nav ul{ gap: 1.4rem; }
+    nav a{ font-size: 23px; }
 }
 
 @media screen and (max-width: 980px) {
@@ -169,14 +188,12 @@ footer .social li:not(:last-child){ margin-right: 48px; }
     .flex-t{ display: flex; flex-flow: row; }
     .flex-t-col{ display: flex; flex-flow: column; }
 
-    nav ul.flex{ opacity: 0; visibility: hidden; flex-flow: column; position: absolute; top: 0; bottom: 0; background-color: var(--dark); left: 0; right: 50%; transform: translateX(-100%); transition: 200ms; overflow: auto; }
+    nav{ z-index: 2; }
+    nav ul.flex{ opacity: 0; visibility: hidden; flex-flow: column; position: fixed; top: 0; bottom: 0; background-color: var(--dark); left: 0; right: 50%; transform: translateX(-100%); transition: 200ms; overflow: auto; }
 
-    nav label, nav .menu-icon{ display: block; }
+    nav .menu-icon{ display: block; }
 
-    nav input:checked + label .menu-icon{ display: none; }
-    nav input:checked + label .cancel-icon{ display: block; position: absolute; top: 0; left: 50%; }
-
-    nav input:checked + label + ul.flex{ opacity: 1; visibility: visible; transform: translateX(0); }
+    nav ul.flex.open{ opacity: 1; visibility: visible; transform: translateX(0); }
 
     .reviews .flex-col{ padding: 0; }
 
@@ -220,6 +237,8 @@ footer .social li:not(:last-child){ margin-right: 48px; }
     .flex-p-col{ display: flex; flex-flow: column; }
 
     h1{ font-size: 6rem; line-height: 15rem; }
+
+    .popup .place-order{ font-size: 1em; padding: 1rem; max-width: 200px; }
 
     .banner{ padding: 0 4px 2rem 0; }
 

@@ -11,31 +11,52 @@
         <header>
             <div class="container-lg flex justify-sb align-center">
                 <nav>
-                    <input type="checkbox" id="menu">
-                    <label for="menu">
-                        <div class="menu-icon">
+                    <div class="nav-btn">
+                        <div class="menu-icon hidden">
                             <div></div>
                             <div></div>
                             <div></div>
                         </div>
-                        <div class="cancel-icon"></div>
-                    </label>
-                    <ul class="flex align-center font-montserrat bold">
-                        <li class="active"><a href="">Home</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Menu</a></li>
-                        <li><a href="">Blog</a></li>
-                        <li><a href="">Shop</a></li>
-                        <li><a href="">Contact</a></li>
+                    </div>
+                    <ul class="flex align-center font-montserrat bold nav">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#coffee">Menu</a></li>
+                        <li><a href="#vouchers">Vouchers</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#branches">Branches</a></li>
+                        <li><a href="#info">Contact</a></li>
                     </ul>
                 </nav>
                 <div class="logo">
-                    <a href=""><img src="./img/logo/logo.webp" alt="Logo"></a>
+                    <img src="./img/logo/logo.webp" alt="Logo" width="218" height="51">
                 </div>
             </div>
+            <div class="overlay hidden"></div>
         </header>
+        <div class="overlay hidden"></div>
         <main>
-            <section class="banner">
+            <div class="overlay hidden"></div>
+            <div class="popup-order hidden">
+                <div class="close"><span class="fa fa-times-circle"></span></div>
+                <h2>Order Coffee</h2>
+                <form name="order" class="flex-col form-order">
+                    <select name="selectedCoffee" id="selectedCoffee" aria-label="Select Coffee" required>
+                        <option value="" selected disabled>--Select Coffee--</option>
+                        <option value="black-coffee">Black Coffee</option>
+                        <option value="hot-coffee">Hot Coffee</option>
+                        <option value="white-coffee">White Coffee</option>
+                    </select>
+                    <select name="quantity" id="quantity" size="1" aria-label="Quantity" required>
+                        <option value="" selected disabled>Quantity</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <button type="submit" class="btn rounded light place-order">Place Order</button>
+                </form>
+            </div>
+            <section class="banner" id="home">
                 <div class="container-lg">
                     <div class="row">
                         <div class="col-12">
@@ -44,17 +65,17 @@
                         <div class="col-6 col-lp-12 title">
                             <h2 class="font-montserrat">Your Headline</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati aliquam, consectetur vel itaque fugiat quisquam.</p>
-                            <button class="btn rounded dark">Order Now</button>
+                            <button class="btn rounded dark order-now" data-value="">Order Now</button>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="black-coffee coffee">
+            <section class="black-coffee coffee" id="coffee">
                 <div class="container">
                     <div class="row">
                         <div class="col-4 col-t-12 title">
                             <h2>Black<br>Coffees</h2>
-                            <button class="btn rounded light">Order Now</button>
+                            <button class="btn rounded light order-now" data-value="black-coffee">Order Now</button>
                         </div>
                         <div class="col-1"></div>
                         <div class="col-7 col-t-12 desc">
@@ -71,7 +92,7 @@
                         <div class="row">
                             <div class="col-4 col-t-12 title">
                                 <h2>Hot<br>Coffees</h2>
-                                <button class="btn rounded dark">Order Now</button>
+                                <button class="btn rounded dark order-now" data-value="hot-coffee">Order Now</button>
                             </div>
                             <div class="col-1"></div>
                             <div class="col-7 col-t-12 desc">
@@ -86,7 +107,7 @@
                         <div class="row">
                             <div class="col-4 col-t-12 title">
                                 <h2>White<br>Coffees</h2>
-                                <button class="btn rounded dark">Order Now</button>
+                                <button class="btn rounded dark order-now" data-value="white-coffee">Order Now</button>
                             </div>
                             <div class="col-1"></div>
                             <div class="col-7 col-t-12 desc">
@@ -96,26 +117,34 @@
                         </div>
                     </div>
                 </section>
-                <section class="vouchers flex-col align-center">
+                <section class="vouchers flex-col align-center" id="vouchers">
                     <h2>Voucher</h2>
                     <img class="img-resp" src="./img/voucher.webp" alt="Voucher" width="850" height="449">
                     <button class="btn rounded dark">Get Voucher Now</button>
+                    <div class="popup-voucher hidden">
+                        <div class="close"><span class="fa fa-times-circle"></span></div>
+                        <h2>Voucher Request</h2>
+                        <form name="voucher" class="flex-col form-voucher">
+                            <input type="email" name="email" id="email" required aria-label="Email" placeholder="Email">
+                            <button type="submit" class="btn rounded light place-order">Request</button>
+                        </form>
+                    </div>
                 </section>
-                <section class="reviews">
+                <section class="reviews" id="reviews">
                     <div class="container">
                         <h2>Customer Reviews</h2>
                         <div class="row">
                             <div class="col-6 col-lp-12">
                                 <div class="flex-col align-center">
                                     <img class="img-resp" src="./img/customer/john-peter.webp" alt="John Peter" width="384" height="368">
-                                    <p><cite class="font-grand-hotel">John Peter</cite></b>
+                                    <b><cite class="font-grand-hotel">John Peter</cite></b>
                                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit optio quidem eaque hic dignissimos vero architecto quas libero harum eius rerum iure.</p>
                                 </div>
                             </div>
                             <div class="col-6 col-lp-12">
                                 <div class="flex-col align-center">
                                     <img class="img-resp" src="./img/customer/ella-thomson.webp" alt="Ella Thomson" width="383" height="368">
-                                    <p><cite class="font-grand-hotel">Ella Thomson</cite></b>
+                                    <b><cite class="font-grand-hotel">Ella Thomson</cite></b>
                                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit optio quidem eaque hic dignissimos vero architecto quas libero harum eius rerum iure.</p>
                                 </div>
                             </div>
@@ -138,7 +167,7 @@
                 </div>
             </section>
             <div class="separator"></div>
-            <section class="branches">
+            <section class="branches" id="branches">
                 <div class="container-lg">
                     <h2>Our Branches</h2>
                     <div class="row justify-sb">
@@ -167,7 +196,7 @@
                 </div>
             </section>
             <div class="separator"></div>
-            <section class="contact-info">
+            <section class="contact-info" id="info">
                 <div class="container-lg">
                     <div class="row">
                         <div class="col-6">
@@ -200,13 +229,13 @@
         </main>
         <footer>
             <div class="container-lg flex justify-sb align-center">
-                <ul class="flex nav font-montserrat bold">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Menu</a></li>
-                    <li><a href="">Blog</a></li>
-                    <li><a href="">Shop</a></li>
-                    <li><a href="">Contact</a></li>
+                <ul class="flex nav font-montserrat bold nav">
+                    <li><a href="#home">Home</a></li>
+                        <li><a href="#coffee">Menu</a></li>
+                        <li><a href="#vouchers">Vouchers</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#branches">Branches</a></li>
+                        <li><a href="#info">Contact</a></li>
                 </ul>
                 <ul class="flex social">
                     <li><a href=""><span class="fa fa-facebook"></span></a></li>
@@ -216,5 +245,7 @@
                 </ul>
             </div>
         </footer>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="./js/script.js"></script>
     </body>
 </html>
