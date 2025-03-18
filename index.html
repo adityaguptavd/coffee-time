@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Coffee Time</title>
+        <link rel="shortcut icon" href="./img/logo/favicon.png" type="image/x-icon">
+        <title>Coffee Time | Freshly Brewed Coffee & Cozy Café Vibes</title>
+        <meta name="description" content="Welcome to Coffee Time – your perfect spot for freshly brewed coffee, delicious snacks, and a cozy atmosphere. Enjoy the best coffee experience with us!">
+
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"></noscript>
+
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+
+        <link rel="preload" href="./img/bg/banner-bg.webp" as="image">
+
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <header>
@@ -36,8 +46,8 @@
         <div class="overlay hidden"></div>
         <main>
             <div class="overlay hidden"></div>
-            <div class="popup-order hidden">
-                <div class="close"><span class="fa fa-times-circle"></span></div>
+            <div class="popup-order hidden" id="popup-order">
+                <div class="close"><span class="fa fa-times-circle" aria-label="Close" aria-controls="popup-order"></span></div>
                 <h2>Order Coffee</h2>
                 <form name="order" class="flex-col form-order">
                     <select name="selectedCoffee" id="selectedCoffee" aria-label="Select Coffee" required>
@@ -96,7 +106,7 @@
                             </div>
                             <div class="col-1"></div>
                             <div class="col-7 col-t-12 desc">
-                                <img src="./img/coffee/hot-coffee.webp" alt="Hot Coffee" width="537" height="516">
+                                <img src="./img/coffee/hot-coffee.webp" alt="Hot Coffee" width="537" height="516" loading="lazy">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cum doloribus laborum, ipsum reiciendis eius nobis officiis esse sequi alias. Neque ullam debitis fugiat eius nesciunt ut. Eum, dolores cupiditate?</p>
                             </div>
                         </div>
@@ -111,7 +121,7 @@
                             </div>
                             <div class="col-1"></div>
                             <div class="col-7 col-t-12 desc">
-                                <img src="./img/coffee/white-coffee.webp" alt="White Coffee" width="537" height="516">
+                                <img src="./img/coffee/white-coffee.webp" alt="White Coffee" width="537" height="516" loading="lazy">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cum doloribus laborum, ipsum reiciendis eius nobis officiis esse sequi alias. Neque ullam debitis fugiat eius nesciunt ut. Eum, dolores cupiditate?</p>
                             </div>
                         </div>
@@ -119,10 +129,10 @@
                 </section>
                 <section class="vouchers flex-col align-center" id="vouchers">
                     <h2>Voucher</h2>
-                    <img class="img-resp" src="./img/voucher.webp" alt="Voucher" width="850" height="449">
+                    <img class="img-resp" src="./img/voucher.webp" alt="Voucher" width="850" height="449" loading="lazy">
                     <button class="btn rounded dark">Get Voucher Now</button>
-                    <div class="popup-voucher hidden">
-                        <div class="close"><span class="fa fa-times-circle"></span></div>
+                    <div class="popup-voucher hidden" id="popup-voucher">
+                        <div class="close"><span class="fa fa-times-circle" aria-label="Close" aria-controls="popup-voucher"></span></div>
                         <h2>Voucher Request</h2>
                         <form name="voucher" class="flex-col form-voucher">
                             <input type="email" name="email" id="email" required aria-label="Email" placeholder="Email">
@@ -136,14 +146,14 @@
                         <div class="row">
                             <div class="col-6 col-lp-12">
                                 <div class="flex-col align-center">
-                                    <img class="img-resp" src="./img/customer/john-peter.webp" alt="John Peter" width="384" height="368">
+                                    <img class="img-resp" src="./img/customer/john-peter.webp" alt="John Peter" width="384" height="368" loading="lazy">
                                     <b><cite class="font-grand-hotel">John Peter</cite></b>
                                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit optio quidem eaque hic dignissimos vero architecto quas libero harum eius rerum iure.</p>
                                 </div>
                             </div>
                             <div class="col-6 col-lp-12">
                                 <div class="flex-col align-center">
-                                    <img class="img-resp" src="./img/customer/ella-thomson.webp" alt="Ella Thomson" width="383" height="368">
+                                    <img class="img-resp" src="./img/customer/ella-thomson.webp" alt="Ella Thomson" width="383" height="368" loading="lazy">
                                     <b><cite class="font-grand-hotel">Ella Thomson</cite></b>
                                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit optio quidem eaque hic dignissimos vero architecto quas libero harum eius rerum iure.</p>
                                 </div>
@@ -172,21 +182,21 @@
                     <h2>Our Branches</h2>
                     <div class="row justify-sb">
                         <div class="col-4 col-t-12 flex-col flex-t flex-lp-col align-center">
-                            <img class="img-resp" src="./img/branches/branch-1.webp" alt="Branch 1" width="283" height="281">
+                            <img class="img-resp" src="./img/branches/branch-1.webp" alt="Branch 1" width="283" height="281" loading="lazy">
                             <div class="flex-col align-center">
                                 <address class="location rounded light font-montserrat bold">New York</address>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo hic officiis accusamus, voluptates maxime vero amet, iste consectetur sint adipisci animi quaerat excepturi similique ad odio iure sequi, nam repudiandae?</p>
                             </div>
                         </div>
                         <div class="col-4 col-t-12 flex-col flex-t flex-lp-col align-center">
-                            <img class="img-resp" src="./img/branches/branch-2.webp" alt="Branch 2" width="283" height="281">
+                            <img class="img-resp" src="./img/branches/branch-2.webp" alt="Branch 2" width="283" height="281" loading="lazy">
                             <div class="flex-col align-center">
                                 <address class="location rounded light font-montserrat bold">Jakarta</address>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo hic officiis accusamus, voluptates maxime vero amet, iste consectetur sint adipisci animi quaerat excepturi similique ad odio iure sequi, nam repudiandae?</p>
                             </div>
                         </div>
                         <div class="col-4 col-t-12 flex-col flex-t flex-lp-col align-center">
-                            <img class="img-resp" src="./img/branches/branch-3.webp" alt="Branch 3" width="283" height="281">
+                            <img class="img-resp" src="./img/branches/branch-3.webp" alt="Branch 3" width="283" height="281" loading="lazy">
                             <div class="flex-col align-center">
                                 <address class="location rounded light font-montserrat bold">Paris</address>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo hic officiis accusamus, voluptates maxime vero amet, iste consectetur sint adipisci animi quaerat excepturi similique ad odio iure sequi, nam repudiandae?</p>
@@ -200,7 +210,7 @@
                 <div class="container-lg">
                     <div class="row">
                         <div class="col-6">
-                            <img src="./img/logo/logo-lg.webp" alt="Logo" width="298" height="69">
+                            <img src="./img/logo/logo-lg.webp" alt="Logo" width="298" height="69" loading="lazy">
                         </div>
                         <div class="col-6 col-t-12 info">
                             <div class="row">
@@ -238,10 +248,10 @@
                         <li><a href="#info">Contact</a></li>
                 </ul>
                 <ul class="flex social">
-                    <li><a href=""><span class="fa fa-facebook"></span></a></li>
-                    <li><a href=""><span class="fa fa-instagram"></span></a></li>
-                    <li><a href=""><span class="fa fa-twitter"></span></a></li>
-                    <li><a href=""><span class="fa fa-youtube"></span></a></li>
+                    <li><a href=""><span class="fa fa-facebook" aria-label="Facebook"></span></a></li>
+                    <li><a href=""><span class="fa fa-instagram" aria-label="Instagram"></span></a></li>
+                    <li><a href=""><span class="fa fa-twitter" aria-label="Twitter"></span></a></li>
+                    <li><a href=""><span class="fa fa-youtube" aria-label="Youtube"></span></a></li>
                 </ul>
             </div>
         </footer>
